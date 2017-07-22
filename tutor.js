@@ -22,6 +22,14 @@ Tutor.prototype.addStep = function (el, options = null) {
     return false;
   }
 
+  //options:
+  //on: `string` a jQuery event, i.e 'click'
+  //class: `string` a CSS classname to be attached to current step element
+  //start: `function` a function to be run when the step is initiated, called with the current step object
+  //complete: `function` a function to be run when the step is completed, called with the current step object
+  //eventHandler: `function` a function to be called with current step's event (helps to capture keypresses, etc.)
+  //wait: `boolean` wait: true will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing a specific key. See Tutor.next()
+
   var placeholder = {on: options.on || 'click', class: options.class || 'tutor--current'
   };
 
