@@ -2,7 +2,7 @@
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
 Usage
-===============
+===============  
 
 **1. Include**
 
@@ -29,9 +29,9 @@ tutorial.start();
 ```
 
 API Reference
-===============
+===============  
 
-### `Tutor`
+### `Tutor`  
 
 An object containing all Tutor functions & data
 
@@ -39,10 +39,9 @@ An object containing all Tutor functions & data
 
 ``` js
 var walkthrough = new Tutor;
-```
+```  
 
-`Tutor.addStep(element, [options])`
------------
+### `Tutor.addStep(element, [options])`
 The start of any tutorial
 
 **Usage**
@@ -61,7 +60,7 @@ walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 | `options.start` | Function | a function to be run when the step is initiated, called with the current step object |
 | `options.complete` | Function | a function to be run when the step is completed, called with the current step object |
 | `options.eventHandler` | Function | a function to be called with current step's event (helps to capture keypresses, etc.) |
-| `options.wait` | Boolean | `wait: true` will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing more specific events, like a specific key. See *`options.eventHandler`* and *`Tutor.next()`* |
+| `options.wait` | Boolean | `wait: true` will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing more specific events, like a specific key. See *`options.eventHandler`* and *`Tutor.next()`* |  
 
 If `options` is not provided, it uses a placeholder:
 ``` js
@@ -70,9 +69,9 @@ If `options` is not provided, it uses a placeholder:
         on: 'click',
         class: 'tutor--current'
     }
-```
+```  
 
-#### Examples
+#### Examples  
 
 This is a step that is completed by mousing over the element and calls an alert when completed.
 
@@ -100,7 +99,7 @@ This is a step that is completed by pressing the 'p' key.
         eventHandler: checkKey, // ...make our event handler (checkKey) capture any events
         wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
     }).start();
-```
+```  
 
 ### `Tutor.next()`
 Manually skip to the next step
@@ -109,9 +108,9 @@ Manually skip to the next step
 
 ``` js
 walkthrough.next();
-```
+```  
 
->Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.
+>Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.  
 
 ### `Tutor.prev()`
 Manually go to previous step
@@ -122,7 +121,7 @@ Manually go to previous step
 walkthrough.prev();
 ```
 
->Note, `Tutor.prev()` fires the `start` function of the (before) previous step.
+>Note, `Tutor.prev()` fires the `start` function of the (before) previous step.  
 
 ### `Tutor.start([start], [end])`
 Begin the tutorial
@@ -138,7 +137,7 @@ walkthrough.start();
 | Name | Type | Description |
 |---------|----------|---------------------------------------------------------|
 | `start` | Function | a function that is called when starting |
-| `end` | Function | a function that is called after all steps are completed |
+| `end` | Function | a function that is called after all steps are completed |  
 
 #### Examples
 
@@ -154,7 +153,7 @@ walkthrough
     }, function(){
         alert('Finished!')
     });
-```
+```  
 
 That's all there is to it!
 
