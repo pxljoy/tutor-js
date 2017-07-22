@@ -38,6 +38,7 @@ The start of any tutorial
 ``` js
 walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 ```
+**Parameters**
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `element` | Object | a jQuery CSS Selected Element, i.e `'.example'` |
@@ -110,6 +111,7 @@ Begin the tutorial
 ``` js
 walkthrough.start();
 ```
+**Parameters**
 | Name | Type | Description |
 |---------|----------|---------------------------------------------------------|
 | `start` | Function | a function that is called when starting |
