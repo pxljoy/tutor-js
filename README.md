@@ -5,19 +5,25 @@ Usage
 ---------------
 
 **1. Include**
+
 ``` js
 <script src="./tutor.js"/>
 ```
 
 **2. Create a Tutor**
+
 ``` js
 var tutorial = new Tutor;
 ```
+
 **3. Add a step**
+
 ``` js
 tutorial.addStep('.element');
 ```
+
 **4. Start**
+
 ``` js
 tutorial.start();
 ```
@@ -27,7 +33,9 @@ API Reference
 
 ### `Tutor`
 An object containing all Tutor functions & data
+
 **Usage**
+
 ``` js
 var walkthrough = new Tutor;
 ```
@@ -35,10 +43,12 @@ var walkthrough = new Tutor;
 The start of any tutorial
 
 **Usage**
+
 ``` js
 walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 ```
 **Parameters**
+
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `element` | Object | a jQuery CSS Selected Element, i.e `'.example'` |
@@ -58,8 +68,11 @@ If `options` is not provided, it uses a placeholder:
         class: 'tutor--current'
     }
 ```
+
 #### Examples
+
 This is a step that is completed by mousing over the element and calls an alert when completed.
+
 ``` js
     var tutorial = new Tutor;
     tutorial.addStep('.touch-me', {
@@ -69,7 +82,9 @@ This is a step that is completed by mousing over the element and calls an alert 
             }
     }).start();
 ```
+
 This is a step that is completed by pressing the 'p' key.
+
 ``` js
     checkKey = function(e){
         if(e.key === 'p'){
@@ -88,6 +103,7 @@ This is a step that is completed by pressing the 'p' key.
 Manually skip to the next step
 
 **Usage**
+
 ``` js
 walkthrough.next();
 ```
@@ -98,6 +114,7 @@ walkthrough.next();
 Manually go to previous step
 
 **Usage**
+
 ``` js
 walkthrough.prev();
 ```
@@ -108,10 +125,13 @@ walkthrough.prev();
 Begin the tutorial
 
 **Usage**
+
 ``` js
 walkthrough.start();
 ```
+
 **Parameters**
+
 | Name | Type | Description |
 |---------|----------|---------------------------------------------------------|
 | `start` | Function | a function that is called when starting |
@@ -120,6 +140,7 @@ walkthrough.start();
 #### Examples
 
 Alert on start and end of walkthrough.
+
 ``` js
 var walkthrough = new Tutor;
 walkthrough
@@ -136,6 +157,7 @@ That's all there is to it!
 
 Contributing
 --------
+
 For more info on how to contribute please see the [contribution guidelines.](https://github.com/pxljoy/tutor-js/blob/master/CONTRIBUTING.md)
 
 Caught a mistake or want to contribute to the documentation? [Edit this page on Github](https://github.com/pxljoy/tutor-js/blob/master/README.md)
