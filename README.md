@@ -136,8 +136,8 @@ walkthrough.start();
 
 | Name | Type | Description |
 |---------|----------|---------------------------------------------------------|
-| `start` | Function | a function that is called when starting |
-| `end` | Function | a function that is called after all steps are completed |  
+| `start` (optional) | Function | a function that is called when starting |
+| `end` (optional) | Function | a function that is called after all steps are completed |  
 
 #### Examples
 
