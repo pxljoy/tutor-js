@@ -1,41 +1,50 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
 #
-###### Why?
-Ever wanted to create a tutorial for your new spunky application? Me too. I couldn't find any out there that suited my needs, so I made one.
-
+#
 Usage
 ---------------
 
 **1. Include**
 ``` js
-    <script src="./tutor.js"/>
+<script src="./tutor.js"/>
 ```
 
 **2. Create a Tutor**
 ``` js
-    var tutorial = new Tutor;
+var tutorial = new Tutor;
 ```
+**3. Add a step**
+``` js
+tutorial.addStep('.element');
+```
+**4. Start**
+``` js
+tutorial.start();
+```
+
 API Reference
 ------------
+#
 ### `Tutor`
 An object containing all Tutor functions & data
-
+#
 **Usage**
 ``` js
-    var walkthrough = new Tutor;
+var walkthrough = new Tutor;
 ```
+#
 #### `Tutor.addStep(element, [options])`
 The start of any tutorial
 
 **Usage**
 ``` js
-    walkthrough.addStep($('.example'), {on:'click', class:'highlight-step'});
+walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 ```
 #
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `element` | Object | a jQuery Element, i.e `$('.example')` |
+| `element` | Object | a jQuery CSS Selected Element, i.e `'.example'` |
 | `options` (optional) | Object | See below for possible options. |
 | `options.on` | String | a jQuery event, i.e 'click' or 'keypress'. This is the event that needs to be fulfilled to automatically go to the next step. Defaults to 'click'. |
 | `options.class` | String | a CSS classname to be attached to current step element. Defaults to 'tutor--current'. |
@@ -52,36 +61,88 @@ If `options` is not provided, it uses a placeholder:
         class: 'tutor--current'
     }
 ```
-Here is another example, this time the step is completed by pressing the 'p' key.
+#### Examples
+This is a step that is completed by mousing over the element and calls an alert when completed.
+``` js
+    var tutorial = new Tutor;
+    tutorial.addStep('.touch-me', {
+        on:'mouseover',
+        complete: function() {
+            alert('Touched!');
+            }
+    }).start();
+```
+This is a step that is completed by pressing the 'p' key.
 ``` js
     checkKey = function(e){
         if(e.key === 'p'){
             tutorial.next() // ...manually complete the step when the pressed key is 'p'
-        }
-    }
+        };
+    };
     var tutorial = new Tutor;
-    tutorial.addStep($('.input-1'), {
+    tutorial.addStep('.input-1', {
         on: 'keypress', // ...capture the 'keypress' event
         eventHandler: checkKey, // ...make our event handler (checkKey) capture any events
         wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
-    });
-    tutorial.start();
+    }).start();
 ```
-
+#
 #### `Tutor.next()`
+Manually skip to the next step
 
 **Usage**
 ``` js
+walkthrough.next();
+```
+#
+>Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.
+#
+#### `Tutor.prev()`
+Manually go to previous step
 
+**Usage**
+``` js
+walkthrough.prev();
 ```
 
-Collection Functions
---------------------
+>Note, `Tutor.prev()` fires the `start` function of the (before) previous step.
+#
+#### `Tutor.start([start], [end])`
+Begin the tutorial
 
-The \_.walk module provides versions of most of the
-[Underscore collection functions](http://underscorejs.org/#collections), with
-some small differences that make them better suited for operating on trees.
------------
+**Usage**
+``` js
+walkthrough.start();
+```
+| Name | Type | Description |
+|---------|----------|---------------------------------------------------------|
+| `start` | Function | a function that is called when starting |
+| `end` | Function | a function that is called after all steps are completed |
+#
+#### Examples
+#
+Alert on start and end of walkthrough.
+``` js
+var walkthrough = new Tutor;
+walkthrough
+    .addStep('.element')
+    .addStep('.element-2')
+    .start(function(){
+        alert('Started!')
+    }, function(){
+        alert('Finished!')
+    });
+```
 
-A _parse tree_ is tree that represents the syntactic structure of a formal
-language. For example, the arithmetic expression `1 + (4 + 2) * 7` might have 
+That's all there is to it!
+
+Contributing
+--------
+For more info on how to contribute please see the [contribution guidelines.](https://github.com/pxljoy/tutor-js/blob/master/CONTRIBUTING.md)
+
+Caught a mistake or want to contribute to the documentation? [Edit this page on Github](https://github.com/pxljoy/tutor-js/blob/master/README.md)
+
+License
+--------
+
+TutorJS is licensed under the [MIT License](https://github.com/pxljoy/tutor-js/blob/master/LICENSE).

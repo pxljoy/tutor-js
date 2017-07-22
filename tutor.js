@@ -16,7 +16,7 @@ var Tutor = function(){
 }
 
 
-Tutor.prototype.addStep = function (el, options = null) {
+Tutor.prototype.addStep = function (el, options = undefined) {
   if (typeof el === 'undefined') {
     throw 'TutorJS Error: No jQuery element specified';
     return false;
@@ -30,10 +30,9 @@ Tutor.prototype.addStep = function (el, options = null) {
   //eventHandler: `function` a function to be called with current step's event (helps to capture keypresses, etc.)
   //wait: `boolean` wait: true will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing a specific key. See Tutor.next()
 
-  var placeholder = {on: options.on || 'click', class: options.class || 'tutor--current'
-  };
+  var placeholder = {on: options.on || 'click', class: options.class || 'tutor--current'};
 
-  this.steps.push({el: el, options: options || placeholder});
+  this.steps.push({el: $(el), options: options || placeholder});
 
 
   return this;
@@ -48,7 +47,7 @@ Tutor.prototype.start = function(start = null, end = null){
   this.start = start;
   this.end = end;
   if (!this.steps.length > 0) {
-    throw 'TutorJS Error: x Must contain atleast one step. See x.addStep[fn]';
+    throw 'TutorJS Error: x Must contain atleast one step. See x.addStep()';
     return false;
   }
   if (typeof start === "function") {
@@ -60,7 +59,6 @@ Tutor.prototype.start = function(start = null, end = null){
 
 
 // NEXT.
-
 
 Tutor.prototype.next = function(skip = true){
     var step = this.steps[this.currentStep];
