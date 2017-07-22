@@ -76,7 +76,6 @@
           }, 2000);
           $('#tutorial-title').text('Examples');
           $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
-          $('#tutorial').fadeIn(150);
         },
       })
       .addStep('.tab-html-select', {
@@ -85,7 +84,6 @@
         start:function(){
           $('#tutorial-title').text('Tabs');
           $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
-          $('#tutorial').fadeIn(150);
         },
       })
       .addStep('.tab-css-select', {
@@ -94,14 +92,13 @@
         start:function(){
           $('#tutorial-title').text('Sweet!');
           $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
-          $('#tutorial').fadeIn(150);
         },
       })
 
       $('#example-start').click(function(){
         tutorial.start(null, function(){
           $('#example-start').text('Done! Restart?');
-          $('#tutorial').fadeOut(150);
+          $('#tutorial').fadeOut(250);
         });
       });
 
@@ -195,7 +192,6 @@
         }, 2000);
         $('#tutorial-title').text('Examples');
         $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
-        $('#tutorial').fadeIn(150);
       },
     })
     .addStep('.tab-html-select', {
@@ -204,7 +200,6 @@
       start:function(){
         $('#tutorial-title').text('Tabs');
         $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
-        $('#tutorial').fadeIn(150);
       },
     })
     .addStep('.tab-css-select', {
@@ -213,7 +208,6 @@
       start:function(){
         $('#tutorial-title').text('Sweet!');
         $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
-        $('#tutorial').fadeIn(150);
       },
     })
 

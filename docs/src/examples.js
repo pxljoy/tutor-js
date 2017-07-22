@@ -16,8 +16,8 @@ $(document).ready(function(){
       $(this).toggleClass('tab-selected');
       $htmlTab.removeClass('tab-selected');
       $cssTab.removeClass('tab-selected');
-      $htmlCode.fadeOut(50);
-      $cssCode.fadeOut(50);
+      $htmlCode.fadeOut(0);
+      $cssCode.fadeOut(0);
       $jsCode.fadeIn(50);
       toggled = 'js';
     }
@@ -28,8 +28,8 @@ $(document).ready(function(){
       $(this).toggleClass('tab-selected');
       $jsTab.removeClass('tab-selected');
       $cssTab.removeClass('tab-selected');
-      $jsCode.fadeOut(50);
-      $cssCode.fadeOut(50);
+      $jsCode.fadeOut(0);
+      $cssCode.fadeOut(0);
       $htmlCode.fadeIn(50);
       toggled = 'html';
     }
@@ -40,8 +40,8 @@ $(document).ready(function(){
       $(this).toggleClass('tab-selected');
       $jsTab.removeClass('tab-selected');
       $htmlTab.removeClass('tab-selected');
-      $jsCode.fadeOut(50);
-      $htmlCode.fadeOut(50);
+      $jsCode.fadeOut(0);
+      $htmlCode.fadeOut(0);
       $cssCode.fadeIn(50);
       toggled = 'css';
     }
