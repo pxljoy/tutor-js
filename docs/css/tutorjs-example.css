@@ -271,3 +271,20 @@ html * {
   border-bottom:0;
   cursor:pointer;
 }
+
+.copyright {
+  color:#ccc;
+  position:fixed;
+  bottom:20px;
+  text-decoration: none;
+}
+.copyright a:visited {
+  color:#ccc;
+  text-decoration: none;
+
+}
+.copyright a:link {
+  color:#ccc;
+  text-decoration: none;
+
+}
