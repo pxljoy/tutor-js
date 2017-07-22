@@ -272,7 +272,7 @@ html * {
   cursor:pointer;
 }
 
-.copyright {
+.copyright a{
   color:#ccc;
   position:fixed;
   bottom:20px;
