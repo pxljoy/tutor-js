@@ -4,9 +4,13 @@
 Usage
 ===============  
 
+**0. Add [jQuery](https://jquery.com/)**
+``` html
+<script src="./jquery.js"/>
+```
 **1. Include**
 
-``` js
+``` html
 <script src="./tutor.js"/>
 ```
 
