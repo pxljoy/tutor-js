@@ -1,7 +1,6 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
-#
-#
+
 Usage
 ---------------
 
@@ -25,15 +24,13 @@ tutorial.start();
 
 API Reference
 ------------
-#
+
 ### `Tutor`
 An object containing all Tutor functions & data
-#
 **Usage**
 ``` js
 var walkthrough = new Tutor;
 ```
-#
 #### `Tutor.addStep(element, [options])`
 The start of any tutorial
 
@@ -41,7 +38,6 @@ The start of any tutorial
 ``` js
 walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 ```
-#
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `element` | Object | a jQuery CSS Selected Element, i.e `'.example'` |
@@ -86,7 +82,7 @@ This is a step that is completed by pressing the 'p' key.
         wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
     }).start();
 ```
-#
+
 #### `Tutor.next()`
 Manually skip to the next step
 
@@ -94,9 +90,9 @@ Manually skip to the next step
 ``` js
 walkthrough.next();
 ```
-#
+
 >Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.
-#
+
 #### `Tutor.prev()`
 Manually go to previous step
 
@@ -106,7 +102,7 @@ walkthrough.prev();
 ```
 
 >Note, `Tutor.prev()` fires the `start` function of the (before) previous step.
-#
+
 #### `Tutor.start([start], [end])`
 Begin the tutorial
 
@@ -118,9 +114,9 @@ walkthrough.start();
 |---------|----------|---------------------------------------------------------|
 | `start` | Function | a function that is called when starting |
 | `end` | Function | a function that is called after all steps are completed |
-#
+
 #### Examples
-#
+
 Alert on start and end of walkthrough.
 ``` js
 var walkthrough = new Tutor;
