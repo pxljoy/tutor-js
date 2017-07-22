@@ -31,7 +31,8 @@ tutorial.start();
 API Reference
 ------------
 
-### `Tutor`
+`Tutor`
+-----------
 An object containing all Tutor functions & data
 
 **Usage**
@@ -39,7 +40,9 @@ An object containing all Tutor functions & data
 ``` js
 var walkthrough = new Tutor;
 ```
-#### `Tutor.addStep(element, [options])`
+
+`Tutor.addStep(element, [options])`
+-----------
 The start of any tutorial
 
 **Usage**
@@ -99,7 +102,8 @@ This is a step that is completed by pressing the 'p' key.
     }).start();
 ```
 
-#### `Tutor.next()`
+`Tutor.next()`
+-----------
 Manually skip to the next step
 
 **Usage**
@@ -110,7 +114,8 @@ walkthrough.next();
 
 >Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.
 
-#### `Tutor.prev()`
+`Tutor.prev()`
+-----------
 Manually go to previous step
 
 **Usage**
@@ -121,7 +126,8 @@ walkthrough.prev();
 
 >Note, `Tutor.prev()` fires the `start` function of the (before) previous step.
 
-#### `Tutor.start([start], [end])`
+`Tutor.start([start], [end])`
+-----------
 Begin the tutorial
 
 **Usage**
