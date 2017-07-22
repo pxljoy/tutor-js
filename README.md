@@ -2,7 +2,7 @@
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
 Usage
----------------
+===============
 
 **1. Include**
 
@@ -29,10 +29,10 @@ tutorial.start();
 ```
 
 API Reference
-------------
+===============
 
-`Tutor`
------------
+### `Tutor`
+
 An object containing all Tutor functions & data
 
 **Usage**
@@ -102,8 +102,7 @@ This is a step that is completed by pressing the 'p' key.
     }).start();
 ```
 
-`Tutor.next()`
------------
+### `Tutor.next()`
 Manually skip to the next step
 
 **Usage**
@@ -114,8 +113,7 @@ walkthrough.next();
 
 >Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.
 
-`Tutor.prev()`
------------
+### `Tutor.prev()`
 Manually go to previous step
 
 **Usage**
@@ -126,8 +124,7 @@ walkthrough.prev();
 
 >Note, `Tutor.prev()` fires the `start` function of the (before) previous step.
 
-`Tutor.start([start], [end])`
------------
+### `Tutor.start([start], [end])`
 Begin the tutorial
 
 **Usage**
