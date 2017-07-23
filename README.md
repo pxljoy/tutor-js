@@ -78,7 +78,7 @@ walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 | `options.target` | String | jQuery CSS Selector. Adds the `options.class` to targeted element (useful for input fields, etc.) |
 | `options.start` | Function | a function to be run when the step is initiated, called with the current step object |
 | `options.complete` | Function | a function to be run when the step is completed, called with the current step object |
-| `options.eventHandler` | Function | a function to be called with current step's event, the step, and called with `this` |
+| `options.eventHandler` | Function | a function to be called with the current step's event, the step. It has `this` context, too. |
 | `options.wait` | Boolean | `wait: true` will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing more specific events, like a specific key. See *`options.eventHandler`* and *`Tutor.next()`* |  
 
 If `options` is not provided, it uses a placeholder:
