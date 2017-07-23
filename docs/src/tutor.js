@@ -91,9 +91,9 @@ Tutor.prototype.next = function(s){
       target.addClass(step.options.class);
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
-          step.options.eventHandler(e, step);
+          step.options.eventHandler.call(_this, e, step);
         } else if (typeof step.options.eventHandler === 'function'){
-          step.options.eventHandler(e, step);
+          step.options.eventHandler.call(_this, e, step);
           step.el.off(step.options.on + '.tutorjs.' + _this.__uniqueId);
           go();
         } else if (step.options.wait === true) {
@@ -142,9 +142,9 @@ Tutor.prototype.prev = function(){
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
         console.log(_this.__uniqueId);
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
-          step.options.eventHandler(e, step);
+          step.options.eventHandler.call(_this, e, step);
         } else if (typeof step.options.eventHandler === 'function'){
-          step.options.eventHandler(e, step);
+          step.options.eventHandler.call(_this, e, step);
           step.el.off(step.options.on + '.tutorjs.' + _this.__uniqueId);
           go();
         } else if (step.options.wait === true) {

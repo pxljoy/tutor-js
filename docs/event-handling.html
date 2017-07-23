@@ -79,7 +79,7 @@
         wait:true, // Don't automatically go to next step
         eventHandler: function(e){
           if (e.key === 'Enter') { //if the key is Enter,
-            tutorial.next(); //go to next step.
+            this.next(); //go to next step.
           }
         },
         complete: function(){
@@ -97,7 +97,7 @@
         eventHandler: function(e, step) {
           if (e.target.value.length >= 5 && e.key === 'Enter') { //if the input's value is longer than 5 characters AND they pressed Enter
             step.el.css('border', '1px solid rgb(204, 204, 204)'); // ... reset if errored *
-            tutorial.next(); //Complete!
+            this.next(); //Complete!
           } else if (e.key === 'Enter'){ // or, if they try to submit without it being >= 5 characters long
             step.el.css('border', '1px solid red'); // get the step's element and apply a red border. *
           }
@@ -222,7 +222,7 @@
       wait:true,
       eventHandler: function(e){
         if (e.key === 'Enter') {
-          tutorial.next();
+          this.next();
         }
       },
       complete: function(){
@@ -240,7 +240,7 @@
       eventHandler: function(e, step) {
         if (e.target.value.length >= 5 && e.key === 'Enter') {
           step.el.css('border', '1px solid rgb(204, 204, 204)');
-          tutorial.next();
+          this.next();
         } else if (e.key === 'Enter'){
           step.el.css('border', '1px solid red');
         }
