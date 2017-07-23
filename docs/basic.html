@@ -99,8 +99,6 @@
       $('#example-start').click(function(){
         tutorial.start(null, function(){ //Start the Tutor, passing it an End function to be run one complete
           $('#example-start').text('Done! Restart?'); //Once complete, change the text of the button...
-          $('#tutorial-title').text('Congrats!');
-          $('#tutorial-content').text('Closing...');
           $('#tutorial').fadeOut(250); //And fade out the tutorial window.
         });
       });
@@ -228,8 +226,6 @@
     $('#example-start').click(function(){
       tutorial.start(null, function(){
         $('#example-start').text('Done! Restart?');
-        $('#tutorial-title').text('Congrats!');
-        $('#tutorial-content').text('Closing...');
         $('#tutorial').fadeOut(250);
       });
     });
