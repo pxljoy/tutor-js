@@ -16,7 +16,7 @@ var Tutor = function(){
 }
 
 
-Tutor.prototype.addStep = function (el, options = undefined) {
+Tutor.prototype.addStep = function (el, options) {
   if (typeof el === 'undefined') {
     throw 'TutorJS Error: No jQuery element specified';
     return false;
@@ -50,7 +50,13 @@ Tutor.prototype.start = function(s, e){
   return this;
 }
 
-Tutor.prototype.next = function(skip = true){
+Tutor.prototype.next = function(s){
+    var skip;
+    if (typeof s === "undefined") {
+      skip = true;
+    } else {
+      skip = s;
+    }
     var step = this.steps[this.currentStep];
     var target;
     if (typeof step.options.target === "string") {
