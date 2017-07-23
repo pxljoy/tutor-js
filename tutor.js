@@ -74,9 +74,9 @@ Tutor.prototype.next = function(skip = true){
     if (skip === false) {
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
-          step.options.eventHandler(e);
+          step.options.eventHandler(e, step);
         } else if (typeof step.options.eventHandler === 'function'){
-          step.options.eventHandler(e);
+          step.options.eventHandler(e, step);
           step.el.off(step.options.on + '.tutorjs.' + _this.__uniqueId);
           go();
         } else if (step.options.wait === true) {
@@ -120,9 +120,9 @@ Tutor.prototype.prev = function(){
     }
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
-          step.options.eventHandler(e);
+          step.options.eventHandler(e, step);
         } else if (typeof step.options.eventHandler === 'function'){
-          step.options.eventHandler(e);
+          step.options.eventHandler(e, step);
           step.el.off(step.options.on + '.tutorjs.' + _this.__uniqueId);
           go();
         } else if (step.options.wait === true) {

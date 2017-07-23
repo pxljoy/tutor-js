@@ -2,6 +2,17 @@ html * {
   box-sizing: border-box;
 }
 
+a {
+  color:#000;
+  text-decoration: underline;
+}
+a:visited {
+  color:#000;
+}
+a:link {
+  color:#fff;
+}
+
 
 .navbar {
   position: relative;
@@ -127,7 +138,7 @@ html * {
   position: absolute;
   bottom: 150px;
   background-color: #24292e;
-  color: #fff;
+  color: #fff!important;
   font-weight: 300;
   padding:15px;
   text-decoration: none;

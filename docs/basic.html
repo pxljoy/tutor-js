@@ -35,7 +35,7 @@
   </div>
   <div id="how" class="main-content coded">
     <h2 class="heading-2 dark">How?</h2>
-    <p>This is one of the simplest examples. It uses two steps in total.</p>
+    <p>This is one of the simplest examples. Most of the code is just updating the small tutorial window.</p>
 
     <div class="tabs">
       <div class="tab tab-js-select tab-selected">
@@ -67,6 +67,7 @@
           $('#tutorial').fadeIn(150);
         },
       })
+      //Add another step
       .addStep('.examples', {
         on:'click',
         class:'example--outline',
@@ -78,6 +79,7 @@
           $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
         },
       })
+      //And another...
       .addStep('.tab-html-select', {
         on:'click',
         class: 'example--outline-tab',
@@ -86,6 +88,7 @@
           $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
         },
       })
+      //Add the last step
       .addStep('.tab-css-select', {
         on:'click',
         class: 'example--outline-tab',
@@ -94,16 +97,19 @@
           $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
         },
       })
-
+      //Once you click the 'Start Tutorial' button...
       $('#example-start').click(function(){
-        tutorial.start(null, function(){
-          $('#example-start').text('Done! Restart?');
-          $('#tutorial').fadeOut(250);
+        tutorial.start(null, function(){ //Start the Tutor, passing it an End function to be run one complete
+          $('#example-start').text('Done! Restart?'); //Once complete, change the text of the button...
+          $('#tutorial-title').text('Congrats!');
+          $('#tutorial-content').text('Closing...');
+          $('#tutorial').fadeOut(250); //And fade out the tutorial window.
         });
       });
 
     </code></pre>
     <pre class="examples tab-html"><code class="html">
+        &lt;!-- This is the small tutorial window that we'll be updating as the tutorial goes along. --&gt;
         &lt;div id="tutorial" style="display:none;"&gt;
           &lt;h2 id="tutorial-title"&gt;&lt;/h2&gt;
           &lt;p id="tutorial-content"&gt;&lt;/p&gt;
@@ -141,6 +147,17 @@
         cursor:pointer;
         font-weight:bold;
       }
+
+      .example--outline {
+        border: 1px solid rgb(172, 83, 117);
+        cursor:pointer;
+      }
+
+      .example--outline-tab {
+        border: 1px solid rgb(172, 83, 117);
+        border-bottom:0;
+        cursor:pointer;
+      }
     </code></pre>
   </div>
   <div class="sidebar">
@@ -148,8 +165,8 @@
       <a class="submenu" href="#example">Example</a>
       <a class="submenu" href="#how">How</a>
     </div>
-    <!-- <div class="link"><a href="#">Event Handling</a></div>
-    <div class="link"><a href="#">AJAX &amp; options.wait</a></div>
+    <div class="link"><a href="event-handling.html">Event Handling</a></div>
+    <!-- <div class="link"><a href="#">AJAX &amp; options.wait</a></div>
     <div class="link"><a href="#">Step Control</a></div>
     <div class="link"><a href="#">Tutor &amp; Bootstrap</a></div>
     <div class="link"><a href="#">Multiple Tutors</a></div> -->
@@ -214,6 +231,8 @@
     $('#example-start').click(function(){
       tutorial.start(null, function(){
         $('#example-start').text('Done! Restart?');
+        $('#tutorial-title').text('Congrats!');
+        $('#tutorial-content').text('Closing...');
         $('#tutorial').fadeOut(250);
       });
     });
