@@ -63,10 +63,11 @@ walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `element` | Object | a jQuery CSS Selected Element, i.e `'.example'` |
+| `element` | Object | a jQuery CSS Selector, i.e `'.example'` |
 | `options` (optional) | Object | See below for possible options. |
 | `options.on` | String | a jQuery event, i.e 'click' or 'keypress'. This is the event that needs to be fulfilled to automatically go to the next step. Defaults to 'click'. |
 | `options.class` | String | a CSS classname to be attached to current step element. Defaults to 'tutor--current'. |
+| `options.target` | String | jQuery CSS Selector. Adds the `options.class` to targeted element (useful for input fields, etc.) |
 | `options.start` | Function | a function to be run when the step is initiated, called with the current step object |
 | `options.complete` | Function | a function to be run when the step is completed, called with the current step object |
 | `options.eventHandler` | Function | a function to be called with current step's event (helps to capture keypresses, etc.) |
