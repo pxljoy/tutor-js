@@ -1,6 +1,8 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
+**Version 1.0.2 – Release**
+
 ## [Demo](https://pxljoy.github.io/tutor-js/basic.html)
 
 Usage
