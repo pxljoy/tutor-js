@@ -1,6 +1,8 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
+## [Demo](https://pxljoy.github.io/tutor-js/basic.html)
+
 Usage
 ===============  
 
@@ -34,6 +36,8 @@ tutorial.start();
 
 API Reference
 ===============  
+
+>Note, UI and such currently is your job. TutorJS just provides a good backbone for dealing with that stuff.
 
 ### `Tutor`  
 
