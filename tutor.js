@@ -1,7 +1,6 @@
 var Tutor = function(){
   this.steps = [];
   this.currentStep = 0;
-  this.options = {};
   (function() {
     if ( typeof Tutor.prototype.uniqueid == "undefined" ) {
         var id = 0;
@@ -23,7 +22,7 @@ Tutor.prototype.addStep = function (el, options = undefined) {
     return false;
   }
 
-  var placeholder = {on: options.on || 'click', class: options.class || 'tutor--current'};
+  var placeholder = { on: options.on || 'click', class: options.class || 'tutor--current' };
 
   this.steps.push({el: $(el), options: options || placeholder});
 
@@ -31,16 +30,21 @@ Tutor.prototype.addStep = function (el, options = undefined) {
   return this;
 };
 
-Tutor.prototype.start = function(s = null, e = null){
+Tutor.prototype.start = function(s, e){
   this.currentStep = 0;
-  this.options.start = s;
-  this.options.end = e;
   if (!this.steps.length > 0) {
     throw 'TutorJS Error: x Must contain atleast one step. See x.addStep()';
     return false;
   }
-  if (typeof s === "function") {
-    s();
+  if ((typeof s === "function" && typeof this.options !== "object") || (typeof e === "function" && typeof this.options !== "object")) {
+    this.options = {};
+    if (typeof s === "function") {
+      this.options.start = s;
+      s();
+    }
+    if (typeof e === "function") {
+      this.options.end = e;
+    }
   }
   this.next(false);
   return this;
@@ -48,7 +52,13 @@ Tutor.prototype.start = function(s = null, e = null){
 
 Tutor.prototype.next = function(skip = true){
     var step = this.steps[this.currentStep];
-    step.el.addClass(step.options.class);
+    var target;
+    if (typeof step.options.target === "string") {
+        target = $(step.options.target);
+    } else {
+        target = step.el;
+    }
+
     if (typeof step.options.start === "function") {
       step.options.start(step);
     }
@@ -56,7 +66,7 @@ Tutor.prototype.next = function(skip = true){
     var _this = this;
 
     var go = function(){
-      step.el.removeClass(step.options.class);
+      target.removeClass(step.options.class);
       if (typeof step.options.complete === "function") {
         step.options.complete(step);
       }
@@ -72,6 +82,7 @@ Tutor.prototype.next = function(skip = true){
     }
 
     if (skip === false) {
+      target.addClass(step.options.class);
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
           step.options.eventHandler(e, step);
@@ -99,26 +110,31 @@ Tutor.prototype.prev = function(){
     this.currentStep -= 1;
 
     var step = this.steps[this.currentStep];
-    step.el.addClass(step.options.class);
+    var target;
+    if (typeof step.options.target === "string") {
+        target = $(step.options.target);
+    } else {
+      target = step.el;
+    }
+    target.addClass(step.options.class);
     if (typeof step.options.start === "function") {
       step.options.start(step);
     }
 
     var _this = this;
 
-    var nS = _this.steps[_this.currentStep + 1];
-
-    if (_this.currentStep + 1 <= _this.steps.length){
-      nS.el.off(nS.options.on + '.tutorjs.' + _this.__uniqueId);
-      nS.el.removeClass(nS.options.class);
-    };
+    var nS = this.steps[_this.currentStep + 1];
+    nS.el.off(nS.options.on + '.tutorjs.' + _this.__uniqueId);
+    nS.el.removeClass(nS.options.class);
 
     var go = function(){
       if (typeof step.options.complete === "function") {
         step.options.complete(step);
       }
+      _this.next();
     }
       step.el.on(step.options.on + '.tutorjs.' + _this.__uniqueId, function(e){
+        console.log(_this.__uniqueId);
         if (typeof step.options.eventHandler === 'function' && step.options.wait === true){
           step.options.eventHandler(e, step);
         } else if (typeof step.options.eventHandler === 'function'){

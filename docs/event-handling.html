@@ -212,6 +212,7 @@
     .addStep('#input-1', {
       on:'keypress',
       class:'input--highlight',
+      target:'.paragraph',
       start:function(){
         $('#input-1').focus();
         $('#example-start').text('Running...');
@@ -253,11 +254,11 @@
         scrollTop: $('.examples').offset().top
         }, 2000);
         $('#tutorial-title').text('Booyah');
-        $('#tutorial-content').text('Awesome. Now check out how it\'s done! Click this window to close.');
+        $('#tutorial-content').text('Awesome. Now check out how it\'s done! Closing in 5s.');
         $('#example-start').text('Done! Restart?');
         setTimeout(function(){
           $('#tutorial').fadeOut(250);
-        }, 2500)
+        }, 5000);
       });
     });
 
