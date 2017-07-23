@@ -52,6 +52,8 @@ var walkthrough = new Tutor;
 ### `Tutor.addStep(element, [options])`
 The start of any tutorial
 
+>Note, TutorJS supports chaining, so x.addStep().addStep().start() is acceptable and encouraged.
+
 **Usage**
 
 ``` js
@@ -106,11 +108,23 @@ This is a step that is completed by pressing the 'p' key.
         on: 'keypress', // ...capture the 'keypress' event
         eventHandler: checkKey, // ...make our event handler (checkKey) capture any events
         wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
+    });
+    tutorial.start();
+```
+Same example more simply;
+``` js
+    var tutorial = new Tutor;
+    tutorial.addStep('.input-1', {
+        on:'keypress',
+        eventHandler:function(e) {
+            if(e.key==='p') { tutorial.next() }
+        },
+        wait:true
     }).start();
-```  
+```
 
 ### `Tutor.next()`
-Manually skip to the next step
+Manually go to the next step
 
 **Usage**
 
@@ -118,7 +132,7 @@ Manually skip to the next step
 walkthrough.next();
 ```  
 
->Note, `Tutor.next()` fires the `complete` function of the previous step, and the `start` function of the (now) next step.  
+>Note, `Tutor.next()` fires the `complete` function of the (now) previous step, and the `start` function of the (now) current step.  
 
 ### `Tutor.prev()`
 Manually go to previous step
