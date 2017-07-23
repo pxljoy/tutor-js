@@ -1,7 +1,7 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
-**Version 1.0.2 – Release**
+**Version 1.0.4 – Release**
 
 ## [Demo](https://pxljoy.github.io/tutor-js/basic.html)
 
@@ -78,7 +78,7 @@ walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
 | `options.target` | String | jQuery CSS Selector. Adds the `options.class` to targeted element (useful for input fields, etc.) |
 | `options.start` | Function | a function to be run when the step is initiated, called with the current step object |
 | `options.complete` | Function | a function to be run when the step is completed, called with the current step object |
-| `options.eventHandler` | Function | a function to be called with current step's event (helps to capture keypresses, etc.) |
+| `options.eventHandler` | Function | a function to be called with current step's event, the step, and called with `this` |
 | `options.wait` | Boolean | `wait: true` will mean the Tutor won't automatically go to the next step when the event is fired. Use this if you are capturing more specific events, like a specific key. See *`options.eventHandler`* and *`Tutor.next()`* |  
 
 If `options` is not provided, it uses a placeholder:
@@ -96,12 +96,15 @@ This is a step that is completed by mousing over the element and calls an alert 
 
 ``` js
     var tutorial = new Tutor;
+    
     tutorial.addStep('.touch-me', {
         on:'mouseover',
         complete: function() {
             alert('Touched!');
             }
-    }).start();
+    });
+    
+    tutorial.start();
 ```
 
 This is a step that is completed by pressing the 'p' key.
@@ -112,12 +115,14 @@ This is a step that is completed by pressing the 'p' key.
             tutorial.next() // ...manually complete the step when the pressed key is 'p'
         };
     };
+    
     var tutorial = new Tutor;
     tutorial.addStep('.input-1', {
         on: 'keypress', // ...capture the 'keypress' event
         eventHandler: checkKey, // ...make our event handler (checkKey) capture any events
         wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
     });
+    
     tutorial.start();
 ```
 Same example more simply;
@@ -125,9 +130,7 @@ Same example more simply;
     var tutorial = new Tutor;
     tutorial.addStep('.input-1', {
         on:'keypress',
-        eventHandler:function(e) {
-            if(e.key==='p') { tutorial.next() }
-        },
+        eventHandler:function(e) { if(e.key==='p'){ this.next() } },
         wait:true
     }).start();
 ```
