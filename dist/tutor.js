@@ -16,6 +16,19 @@ var Tutor = function(){
 }
 
 
+Tutor.prototype.addSteps = function(steps){
+  var _this = this;
+  steps.forEach(function(step){
+
+      var placeholder = { on: step.options.on || 'click', class: step.options.class || 'tutor--current' };
+
+      _this.steps.push({el: $(step.el), options: step.options || placeholder});
+  })
+
+  return this;
+}
+
+// !! DEPRECATED.
 Tutor.prototype.addStep = function (el, options) {
   if (typeof el === 'undefined') {
     throw 'TutorJS Error: No jQuery element specified';

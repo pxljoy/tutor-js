@@ -66,55 +66,63 @@
 
       //Add steps
       tutorial
-      .addStep('#input-1', {
-        on:'keypress', //Capture keypress
-        class:'input--highlight',
-        start:function(){
-          $('#input-1').focus();
-          $('#example-start').text('Running...');
-          $('#tutorial-title').text('It begins!');
-          $('#tutorial-content').text('Welcome to InputsRUs. Please enter your name in the highlighted field, then press Enter.')
-          $('#tutorial').fadeIn(150);
-        },
-        wait:true, // Don't automatically go to next step
-        eventHandler: function(e){
-          if (e.key === 'Enter') { //if the key is Enter,
-            this.next(); //go to next step.
+      .addSteps([{
+        //Step 1...
+        el: '#input-1',
+        options: {
+          on: 'keypress',
+          class:'input--highlight',
+          start:function(){
+            $('#input-1').focus();
+            $('#example-start').text('Running...');
+            $('#tutorial-title').text('It begins!');
+            $('#tutorial-content').text('Welcome to InputsRUs. Please enter your name in the highlighted field, then press Enter.')
+            $('#tutorial').fadeIn(150);
+          },
+          wait:true,
+          eventHandler: function(e){
+            if (e.key === 'Enter') {
+              this.next();
+            }
           }
-        },
-        complete: function(){
-          $('#input-2').focus(); //Focus next input
-        }
-      })
-      .addStep('#input-2', {
-        on:'keypress', //Capture keypress again
-        class:'input--highlight',
-        start:function(){
-          $('#tutorial-title').text('The Secret Sauce');
-          $('#tutorial-content').text('Great job! Now, please input a secret sauce word over 5 characters! Press Enter when done.')
-        },
-        wait: true, //Don't automatically go to next step
-        eventHandler: function(e, step) {
-          if (e.target.value.length >= 5 && e.key === 'Enter') { //if the input's value is longer than 5 characters AND they pressed Enter
-            step.el.css('border', '1px solid rgb(204, 204, 204)'); // ... reset if errored *
-            this.next(); //Complete!
-          } else if (e.key === 'Enter'){ // or, if they try to submit without it being >= 5 characters long
-            step.el.css('border', '1px solid red'); // get the step's element and apply a red border. *
+          complete: function(){
+            $('#input-2').focus();
           }
         }
-      });
+      },
+      //Step 2...
+      {
+        el: '#input-2',
+        options: {
+          on:'keypress',
+          class:'input--highlight',
+          start:function(){
+            $('#tutorial-title').text('The Secret Sauce');
+            $('#tutorial-content').text('Great job! Now, please input a secret sauce word over 5 characters! Press Enter when done.')
+          },
+          wait: true,
+          eventHandler: function(e, step) {
+            if (e.target.value.length >= 5 && e.key === 'Enter') {
+              step.el.css('border', '1px solid rgb(204, 204, 204)');
+              this.next();
+            } else if (e.key === 'Enter'){
+              step.el.css('border', '1px solid red');
+            }
+          }
+        }
+      }]);
 
       $('#example-start').click(function(){
-        tutorial.start(null, function(){ //Once complete
+        tutorial.start(null, function(){
           $('html, body').animate({
           scrollTop: $('.examples').offset().top
-          }, 2000); //Scroll to example code
+          }, 2000);
           $('#tutorial-title').text('Booyah');
-          $('#tutorial-content').text('Awesome. Now check out how it\'s done! Click this window to close.');
+          $('#tutorial-content').text('Awesome. Now check out how it\'s done! Closing in 5s.');
           $('#example-start').text('Done! Restart?');
           setTimeout(function(){
             $('#tutorial').fadeOut(250);
-          }, 2500); //Auto-hide tutorial window
+          }, 5000);
         });
       });
 
@@ -209,43 +217,49 @@
 
     //Add steps
     tutorial
-    .addStep('#input-1', {
-      on:'keypress',
-      class:'input--highlight',
-      start:function(){
-        $('#input-1').focus();
-        $('#example-start').text('Running...');
-        $('#tutorial-title').text('It begins!');
-        $('#tutorial-content').text('Welcome to InputsRUs. Please enter your name in the highlighted field, then press Enter.')
-        $('#tutorial').fadeIn(150);
-      },
-      wait:true,
-      eventHandler: function(e){
-        if (e.key === 'Enter') {
-          this.next();
-        }
-      },
-      complete: function(){
-        $('#input-2').focus();
-      }
-    })
-    .addStep('#input-2', {
-      on:'keypress',
-      class:'input--highlight',
-      start:function(){
-        $('#tutorial-title').text('The Secret Sauce');
-        $('#tutorial-content').text('Great job! Now, please input a secret sauce word over 5 characters! Press Enter when done.')
-      },
-      wait: true,
-      eventHandler: function(e, step) {
-        if (e.target.value.length >= 5 && e.key === 'Enter') {
-          step.el.css('border', '1px solid rgb(204, 204, 204)');
-          this.next();
-        } else if (e.key === 'Enter'){
-          step.el.css('border', '1px solid red');
+    .addSteps([{
+      el: '#input-1',
+      options: {
+        on: 'keypress',
+        class:'input--highlight',
+        start:function(){
+          $('#input-1').focus();
+          $('#example-start').text('Running...');
+          $('#tutorial-title').text('It begins!');
+          $('#tutorial-content').text('Welcome to InputsRUs. Please enter your name in the highlighted field, then press Enter.')
+          $('#tutorial').fadeIn(150);
+        },
+        wait:true,
+        eventHandler: function(e){
+          if (e.key === 'Enter') {
+            this.next();
+          }
+        },
+        complete: function(){
+          $('#input-2').focus();
         }
       }
-    });
+    },
+    {
+      el: '#input-2',
+      options: {
+        on:'keypress',
+        class:'input--highlight',
+        start:function(){
+          $('#tutorial-title').text('The Secret Sauce');
+          $('#tutorial-content').text('Great job! Now, please input a secret sauce word over 5 characters! Press Enter when done.')
+        },
+        wait: true,
+        eventHandler: function(e, step) {
+          if (e.target.value.length >= 5 && e.key === 'Enter') {
+            step.el.css('border', '1px solid rgb(204, 204, 204)');
+            this.next();
+          } else if (e.key === 'Enter'){
+            step.el.css('border', '1px solid red');
+          }
+        }
+      }
+    }]);
 
     $('#example-start').click(function(){
       tutorial.start(null, function(){

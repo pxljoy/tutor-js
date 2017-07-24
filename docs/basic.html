@@ -55,54 +55,67 @@
 
       //Add steps
       tutorial
-      .addStep('#step1', {
-        on:'click',
-        class:'example--current',
-        start:function(){
-          $('#example-start').text('Running...');
-          $('#tutorial-title').text('Hello World!');
-          $('#tutorial-content').text('Hey! Let\'s start this off by you giving that title a good ol\' click. Click the title to continue.')
-          $('#tutorial').fadeIn(150);
-        },
-      })
-      //Add another step
-      .addStep('.examples', {
-        on:'click',
-        class:'example--outline',
-        start:function(){
-          $('html, body').animate({
-          scrollTop: $('.examples').offset().top
-          }, 2000);
-          $('#tutorial-title').text('Examples');
-          $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
-        },
-      })
-      //And another...
-      .addStep('.tab-html-select', {
-        on:'click',
-        class: 'example--outline-tab',
-        start:function(){
-          $('#tutorial-title').text('Tabs');
-          $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
-        },
-      })
-      //Add the last step
-      .addStep('.tab-css-select', {
-        on:'click',
-        class: 'example--outline-tab',
-        start:function(){
-          $('#tutorial-title').text('Sweet!');
-          $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
-        },
-      })
-      //Once you click the 'Start Tutorial' button...
+      .addSteps([{
+        //Step 1...
+        el: '#step1',
+        options: {
+          on:'click',
+          class:'example--current',
+          start:function(){
+            $('#example-start').text('Running...');
+            $('#tutorial-title').text('Hello World!');
+            $('#tutorial-content').text('Hey! Let\'s start this off by you giving that title a good ol\' click. Click the title to continue.')
+            $('#tutorial').fadeIn(150);
+          }
+        }
+      },
+      {
+        //Step 2...
+        el: '.examples',
+        options:{
+          on:'click',
+          class:'example--outline',
+          start:function(){
+            $('html, body').animate({
+            scrollTop: $('.examples').offset().top
+            }, 2000);
+            $('#tutorial-title').text('Examples');
+            $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
+          }
+        }
+      },
+      {
+        //Step 3...
+        el: '.tab-html-select',
+        options: {
+          on:'click',
+          class:'example--outline-tab',
+          start:function(){
+            $('#tutorial-title').text('Tabs');
+            $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
+          }
+        }
+      },
+      {
+        //Step 4...
+        el: '.tab-css-select',
+        options: {
+          on:'click',
+          class:'example--outline-tab',
+          start:function(){
+            $('#tutorial-title').text('Sweet!');
+            $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
+          }
+        }
+      }]);
+      
+      //Start the tutorial when you click the button...
       $('#example-start').click(function(){
-        tutorial.start(null, function(){ //Start the Tutor, passing it an End function to be run one complete
-          $('#example-start').text('Done! Restart?'); //Once complete, change the text of the button...
-          $('#tutorial').fadeOut(250); //And fade out the tutorial window.
+        tutorial.start(null, function(){ //When the tutorial is complete...
+          $('#example-start').text('Done! Restart?'); //...change stuff!
+          $('#tutorial').fadeOut(250);
         });
       });
-
     </code></pre>
     <pre class="examples tab-html"><code class="html">
         &lt;!-- This is the small tutorial window that we'll be updating as the tutorial goes along. --&gt;
@@ -180,12 +193,15 @@
   <script src="./src/examples.js"></script>
 
   <script>
-    //Instantiate a Tutor object
-    var tutorial = new Tutor;
 
-    //Add steps
-    tutorial
-    .addStep('#step1', {
+  //Instantiate a Tutor object
+  var tutorial = new Tutor;
+
+  //Add steps
+  tutorial
+  .addSteps([{
+    el: '#step1',
+    options: {
       on:'click',
       class:'example--current',
       start:function(){
@@ -193,9 +209,12 @@
         $('#tutorial-title').text('Hello World!');
         $('#tutorial-content').text('Hey! Let\'s start this off by you giving that title a good ol\' click. Click the title to continue.')
         $('#tutorial').fadeIn(150);
-      },
-    })
-    .addStep('.examples', {
+      }
+    }
+  },
+  {
+    el: '.examples',
+    options:{
       on:'click',
       class:'example--outline',
       start:function(){
@@ -204,31 +223,38 @@
         }, 2000);
         $('#tutorial-title').text('Examples');
         $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
-      },
-    })
-    .addStep('.tab-html-select', {
+      }
+    }
+  },
+  {
+    el: '.tab-html-select',
+    options: {
       on:'click',
-      class: 'example--outline-tab',
+      class:'example--outline-tab',
       start:function(){
         $('#tutorial-title').text('Tabs');
         $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
-      },
-    })
-    .addStep('.tab-css-select', {
+      }
+    }
+  },
+  {
+    el: '.tab-css-select',
+    options: {
       on:'click',
-      class: 'example--outline-tab',
+      class:'example--outline-tab',
       start:function(){
         $('#tutorial-title').text('Sweet!');
         $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
-      },
-    })
+      }
+    }
+  }]);
 
-    $('#example-start').click(function(){
-      tutorial.start(null, function(){
-        $('#example-start').text('Done! Restart?');
-        $('#tutorial').fadeOut(250);
-      });
+  $('#example-start').click(function(){
+    tutorial.start(null, function(){
+      $('#example-start').text('Done! Restart?');
+      $('#tutorial').fadeOut(250);
     });
+  });
 
   </script>
 
