@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>TutorJS — Basic Usage</title>
+  <title>TutorJS — AJAX &amp; options.wait</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href="css/normalize.css" rel="stylesheet" type="text/css">
-  <link href="css/tutorjs-example.css" rel="stylesheet" type="text/css">
+  <link href="../css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="../css/tutorjs-example.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
   <script type="text/javascript">WebFont.load({
   google: {
@@ -13,27 +13,28 @@
   }
 });</script>
 </script>
-  <link rel="stylesheet" href="./css/ocean.css">
+  <link rel="stylesheet" href="../css/ocean.css">
 </head>
 <body class="body">
   <div id="example" class="navbar">
     <div class="heading-container">
-      <h1 class="heading"><span><a href="index.html" class="link-2">TutorJS Examples</a></span> <span class="small">— Basic Usage</span></h1>
+      <h1 class="heading"><span><a href="../index" class="link-2">TutorJS Examples</a></span> <span class="small">— AJAX &amp; options.wait</span></h1>
     </div>
   </div>
   <a href="https://github.com/pxljoy/tutor-js"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:99999999;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
   <div class="main-content">
-    <h2 id='step1' class="heading-2">Basic Usage</h2>
+    <h2 id='step1' class="heading-2">AJAX &amp; options.wait</h2>
     <a id="example-start" class="button w-button">Start Tutorial</a>
+    <button id="get-json" style="display:none;" class="json-button button">Get JSON</button>
     <p class="paragraph">
-      Here is a very simple example of using <b>TutorJS</b>.
+      Here is a very simple example of using <b>TutorJS</b> and AJAX.
       <br>
       Click the 'Start Tutorial' button to start.
     </p>
   </div>
   <div id="how" class="main-content coded">
     <h2 class="heading-2 dark">How?</h2>
-    <p>This is one of the simplest examples. Most of the code is just updating the small tutorial window.</p>
+    <p>Using <b>TutorJS</b>'s built in options.wait, we can halt the continuation of steps.</p>
 
     <div class="tabs">
       <div class="tab tab-js-select tab-selected">
@@ -45,7 +46,7 @@
       </div>
 
       <div class="tab tab-css-select">
-        <h3 class="tab-content">CSS</h3>
+        <h3 class="tab-content">Output</h3>
       </div>
     </div>
 
@@ -108,7 +109,7 @@
           }
         }
       }]);
-      
+
       //Start the tutorial when you click the button...
       $('#example-start').click(function(){
         tutorial.start(null, function(){ //When the tutorial is complete...
@@ -123,60 +124,19 @@
           &lt;h2 id="tutorial-title"&gt;&lt;/h2&gt;
           &lt;p id="tutorial-content"&gt;&lt;/p&gt;
         &lt;/div&gt;
-    </code></pre>
-    <pre class="examples tab-css"><code class="css">
-      #tutorial {
-        width:300px;
-        height:200px;
-        border-radius:2px;
-        background-color:#e2bde9;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-        position:fixed;
-        bottom:50px;
-        right:50px;
-        padding:25px;
-      }
-      #tutorial-title {
-        font-size:24px;
-        color:#321f36;
-        font-weight:300;
-        padding:0;
-        margin:0;
-      }
-      #tutorial-content {
-        color:#321f36;
-        padding:0;
-        margin:0;
-        padding-top:25px;
-        font-weight: 300;
-      }
-
-      .example--current {
-        color:rgb(167, 73, 109);
-        cursor:pointer;
-        font-weight:bold;
-      }
-
-      .example--outline {
-        border: 1px solid rgb(172, 83, 117);
-        cursor:pointer;
-      }
-
-      .example--outline-tab {
-        border: 1px solid rgb(172, 83, 117);
-        border-bottom:0;
-        cursor:pointer;
-      }
+      </code></pre>
+    <pre class="examples tab-css"><code class="json output">
+      //Nothing...
     </code></pre>
   </div>
   <div class="sidebar">
-    <div class="link current"><a href="basic.html">Basic Usage</a>
+    <div class="link"><a href="basic">Basic Usage</a></div>
+    <div class="link"><a href="event-handling">Event Handling</a></div>
+    <div class="link current"><a>AJAX &amp; options.wait</a>
       <a class="submenu" href="#example">Example</a>
       <a class="submenu" href="#how">How</a>
     </div>
-    <div class="link"><a href="event-handling.html">Event Handling</a></div>
-    <!-- <div class="link"><a href="#">AJAX &amp; options.wait</a></div>
-    <div class="link"><a href="#">Step Control</a></div>
+    <!-- <div class="link"><a href="#">Step Control</a></div>
     <div class="link"><a href="#">Tutor &amp; Bootstrap</a></div>
     <div class="link"><a href="#">Multiple Tutors</a></div> -->
     <p class="copyright"><a href="https://pxljoy.io/">Made by pxljoy.io</a></p>
@@ -188,9 +148,9 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
-  <script src="./src/highlight.pack.js"></script>
-  <script src="./src/tutor.js"></script>
-  <script src="./src/examples.js"></script>
+  <script src="../src/highlight.pack.js"></script>
+  <script src="../src/tutor.js"></script>
+  <script src="../src/examples.js"></script>
 
   <script>
 
@@ -200,58 +160,33 @@
   //Add steps
   tutorial
   .addSteps([{
-    el: '#step1',
+    el: '#get-json',
     options: {
-      on:'click',
-      class:'example--current',
-      start:function(){
-        $('#example-start').text('Running...');
-        $('#tutorial-title').text('Hello World!');
-        $('#tutorial-content').text('Hey! Let\'s start this off by you giving that title a good ol\' click. Click the title to continue.')
-        $('#tutorial').fadeIn(150);
-      }
-    }
-  },
-  {
-    el: '.examples',
-    options:{
       on:'click',
       class:'example--outline',
       start:function(){
-        $('html, body').animate({
-        scrollTop: $('.examples').offset().top
-        }, 2000);
-        $('#tutorial-title').text('Examples');
-        $('#tutorial-content').text('This is the examples window. Here you can see whatever is used to create the examples! Click it to continue.')
-      }
-    }
-  },
-  {
-    el: '.tab-html-select',
-    options: {
-      on:'click',
-      class:'example--outline-tab',
-      start:function(){
-        $('#tutorial-title').text('Tabs');
-        $('#tutorial-content').text('Awesome! Now, let\'s have a look at what HTML was used to make this. Click the highlighted tab.')
-      }
-    }
-  },
-  {
-    el: '.tab-css-select',
-    options: {
-      on:'click',
-      class:'example--outline-tab',
-      start:function(){
-        $('#tutorial-title').text('Sweet!');
-        $('#tutorial-content').text('Lastly, since you\'ve definitely got the hang of this now, take a peek at the CSS and I\'ll leave you to it! Click the CSS tab to continue.')
-      }
+        $('#example-start').text('Running...');
+        $('#tutorial-title').text('AJAX!');
+        $('#tutorial-content').text('Click the new "Get JSON" button to start a request.')
+        $('#tutorial').fadeIn(150);
+        $('#get-json').fadeIn(150);
+      },
+      eventHandler: function(){
+        $.get('https://jsonplaceholder.typicode.com/users', function(d){
+          $('.output').text(JSON.stringify(d, null, 2));
+          tutorial.next();
+        });
+      },
+      wait:true
     }
   }]);
-
   $('#example-start').click(function(){
     tutorial.start(null, function(){
+      $('html, body').animate({
+      scrollTop: $('.examples').offset().top
+      }, 2000);
       $('#example-start').text('Done! Restart?');
+      $('.tab-css-select').click();
       $('#tutorial').fadeOut(250);
     });
   });
