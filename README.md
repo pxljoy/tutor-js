@@ -33,7 +33,7 @@ var tutorial = new Tutor;
 **3. Add a step**
 
 ``` js
-tutorial.addStep('.element');
+tutorial.addSteps([{el: '.element'}, {el:'.other', options:{on:'keypress'}}]);
 ```
 
 **4. Start**
