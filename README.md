@@ -102,14 +102,14 @@ This is a tutorial that has two steps, each is completed by mousing over the ele
         el:'.touch-me',
         options:{
             on:'mouseover',
-            complete: function(){ alert('Touched 1!); }
+            complete: function(){ alert('Touched 1!'); }
         }
     },
     {   //Step 2...
         el:'.touch-me2',
         options:{
             on:'mouseover',
-            complete: function(){ alert('Touched 2!); }
+            complete: function(){ alert('Touched 2!'); }
         }
     }]);
 
