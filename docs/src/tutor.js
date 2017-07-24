@@ -18,30 +18,14 @@ var Tutor = function(){
 
 Tutor.prototype.addSteps = function(steps){
   var _this = this;
-  steps.forEach(function(step){
-
-      var placeholder = { on: step.options.on || 'click', class: step.options.class || 'tutor--current' };
-
-      _this.steps.push({el: $(step.el), options: step.options || placeholder});
-  })
+  for (i=0;i<steps.length;i++) {
+    var step = steps[i];
+    var placeholder = { on: step.options.on || 'click', class: step.options.class || 'tutor--current' };
+    _this.steps.push({el: $(step.el), options: step.options || placeholder});
+  }
 
   return this;
 }
-
-//!! DEPRECATED.
-Tutor.prototype.addStep = function (el, options) {
-  if (typeof el === 'undefined') {
-    throw 'TutorJS Error: No jQuery element specified';
-    return false;
-  }
-
-  var placeholder = { on: options.on || 'click', class: options.class || 'tutor--current' };
-
-  this.steps.push({el: $(el), options: options || placeholder});
-
-
-  return this;
-};
 
 Tutor.prototype.start = function(s, e){
   this.currentStep = 0;

@@ -1,7 +1,7 @@
 # TutorJS
 ##### A simple and extensible jQuery walkthrough & tutorial library
 
-**Version 1.0.4 – Release**
+**Version 1.1.3 – Release**
 
 ## [Demo](https://pxljoy.github.io/tutor-js/basic.html)
 
@@ -57,21 +57,21 @@ An object containing all Tutor functions & data
 var walkthrough = new Tutor;
 ```  
 
-### `Tutor.addStep(element, [options])`
+### `Tutor.addSteps([steps])`
 The start of any tutorial
 
->Note, TutorJS supports chaining, so x.addStep().addStep().start() is acceptable and encouraged.
+> Note, looking for `Tutor.addStep()`? It's been deprecated since 1.0.4.
 
 **Usage**
 
 ``` js
-walkthrough.addStep('.example', {on:'click', class:'highlight-step'});
+walkthrough.addSteps([{el: '.example'}, {el: '.input'}]);
 ```
 **Parameters**
 
 | Name | Type | Description |
 |------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `element` | Object | a jQuery CSS Selector, i.e `'.example'` |
+| `el` | Object | a jQuery CSS Selector, i.e `'.example'` |
 | `options` (optional) | Object | See below for possible options. |
 | `options.on` | String | a jQuery event, i.e 'click' or 'keypress'. This is the event that needs to be fulfilled to automatically go to the next step. Defaults to 'click'. |
 | `options.class` | String | a CSS classname to be attached to current step element. Defaults to 'tutor--current'. |
@@ -92,18 +92,27 @@ If `options` is not provided, it uses a placeholder:
 
 #### Examples  
 
-This is a step that is completed by mousing over the element and calls an alert when completed.
+This is a tutorial that has two steps, each is completed by mousing over the element and calls an alert when completed.
 
 ``` js
     var tutorial = new Tutor;
-    
-    tutorial.addStep('.touch-me', {
-        on:'mouseover',
-        complete: function() {
-            alert('Touched!');
-            }
-    });
-    
+
+    tutorial.addSteps([{
+        //Step 1...
+        el:'.touch-me',
+        options:{
+            on:'mouseover',
+            complete: function(){ alert('Touched 1!); }
+        }
+    },
+    {   //Step 2...
+        el:'.touch-me2',
+        options:{
+            on:'mouseover',
+            complete: function(){ alert('Touched 2!); }
+        }
+    }]);
+
     tutorial.start();
 ```
 
@@ -115,24 +124,44 @@ This is a step that is completed by pressing the 'p' key.
             tutorial.next() // ...manually complete the step when the pressed key is 'p'
         };
     };
-    
+
     var tutorial = new Tutor;
-    tutorial.addStep('.input-1', {
-        on: 'keypress', // ...capture the 'keypress' event
-        eventHandler: checkKey, // ...make our event handler (checkKey) capture any events
-        wait: true // ...stop auto-completion of the step so we can manually complete it with tutorial.next()
-    });
-    
+    tutorial.addSteps([{
+        el: '.input-1',
+        options: {
+            on: 'focus',
+            complete: function(){ alert('Press P to continue') }
+        }
+    }, {
+        el: '.input-1',
+        options: {
+            on: 'keypress',
+            eventHandler: checkKey,
+            wait: true
+            complete: function(){ alert('Great!') }
+        }
+    }])
+
     tutorial.start();
 ```
 Same example more simply;
 ``` js
     var tutorial = new Tutor;
-    tutorial.addStep('.input-1', {
-        on:'keypress',
-        eventHandler:function(e) { if(e.key==='p'){ this.next() } },
-        wait:true
-    }).start();
+    tutorial.addSteps([{
+        el: '.input-1',
+        options: {
+            on: 'focus',
+            complete: function(){ alert('Press P to continue') }
+        }
+    }, {
+        el: '.input-1',
+        options: {
+            on: 'keypress',
+            eventHandler: function(e){ if(e.key==='p'){ this.next(); } },
+            wait: true
+            complete: function(){ alert('Great!') }
+        }
+    }]).start();
 ```
 
 ### `Tutor.next()`
@@ -180,8 +209,7 @@ Alert on start and end of walkthrough.
 ``` js
 var walkthrough = new Tutor;
 walkthrough
-    .addStep('.element')
-    .addStep('.element-2')
+    addSteps([{el:'.ex1'},{el:'.ex2'}])
     .start(function(){
         alert('Started!')
     }, function(){
